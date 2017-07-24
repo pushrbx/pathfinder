@@ -7,7 +7,9 @@ file(GLOB SOURCE_FILES
         "*.cpp")
 
 hunter_add_package(Protobuf)
+hunter_add_package(Boost)
 find_package(Protobuf CONFIG REQUIRED)
+find_package(Boost CONFIG REQUIRED)
 
 option(DEBUG_BUILD "1 if this is going to be a debug build, 0 otherwise." 1)
 add_definitions(-D_DEBUG=${DEBUG_BUILD})
@@ -37,3 +39,4 @@ if (WIN32)
 endif()
 
 target_link_libraries(${PROJECT_NAME} protobuf::libprotobuf)
+target_link_libraries(${PROJECT_NAME} Boost::boost)
